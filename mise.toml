@@ -1,0 +1,23 @@
+# Installing python, uv and setting up mise.toml
+
+# We can do this with mise use or create the mise.toml file
+# mise use python@3.13
+
+[tools]
+pre-commit = "latest"
+python = "3.13"
+uv = "latest"
+
+[settings]
+python.uv_venv_auto = true
+idiomatic_version_file_enable_tools = ["python"]
+experimental = true
+
+[env]
+APP_REPO = 'cd-playground'
+GITOPS_REPO = 'cd-playground-gitops'
+
+[hooks]#this  will be run whenever we enter a project, when we ssh into the container
+enter = "bash ./scripts/setup_project"
+
+
