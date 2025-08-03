@@ -41,6 +41,7 @@ jobs:
         run: uv python install
 
       - name: Install dependencies
+        #install only some things like pytest, pytest_asyncio
         run: |
           uv sync --locked --dev
 
