@@ -6,6 +6,7 @@
 [tools]
 pre-commit = "latest"
 python = "3.13"
+ruff = "latest"
 trivy = "latest"
 uv = "latest"
 
@@ -19,6 +20,7 @@ APP_REPO = 'cd-playground'
 GITOPS_REPO = 'cd-playground-gitops'
 
 [hooks]#this  will be run whenever we enter a project, when we ssh into the container
-enter = "bash ./scripts/setup_project"
+#enter = "bash ./scripts/setup_project"
+enter = "sh ./scripts/setup_project_sh"
 
 
