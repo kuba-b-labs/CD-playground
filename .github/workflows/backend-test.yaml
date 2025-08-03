@@ -5,7 +5,7 @@ on:
 
 
 jobs:
-  checkout:
+  check_paths:
     runs-on: ubuntu_latest
     outputs:
       should_run: ${{ steps.filter.outputs.backend }}
