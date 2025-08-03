@@ -6,21 +6,22 @@ on:
 
 jobs:
   check_paths:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     outputs:
       should_run: ${{ steps.filter.outputs.backend }}
     steps:
-      - uses: actions/checkout@v4
-      #enables conditional actions for jobs
-      - uses: dorny/paths-filter@v3.0.2
+      - name: Checkout code
+        uses: actions/checkout@v4
+        #enables conditional actions for jobs
+      - name: Path conditioning
+        uses: dorny/paths-filter@v3.0.2
         id: filter
-        with:
         #check if those paths are changed in any way
+        with:
           filters: |
             backend:
               - 'src/backend/**'
-              - '.github/workflows/backend-test.yaml'
-
+              - '.github/workflows/backend-tests.yaml'
   test:
     name: Test Backend
     needs: check_paths
