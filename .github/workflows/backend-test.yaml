@@ -19,7 +19,7 @@ jobs:
           filters: |
             backend:
               - 'src/backend/**'
-              - '.github/workflows/backend-tests.yaml'
+              - '.github/workflows/backend-test.yaml'
 
   test:
     name: Test Backend
