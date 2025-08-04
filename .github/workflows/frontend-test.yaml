@@ -7,7 +7,7 @@ jobs:
   check_code:
     runs-on: ubuntu-latest
     outputs:
-      code-change: $ {{ steps.filter.outputs.frontend }}
+      code-change: ${{ steps.filter.outputs.frontend }}
 #not required for pull requests
     # steps:
     #   - name: checkout-code
