@@ -47,7 +47,20 @@ jobs:
           args: "format --check --diff"
 
       - name: Run tests for frontend
-        run: uv run pytest
+        run: uv run pytest tests/ -v --cov=src/frontend --cov-report=xml --cov-fail-under=80 
+      
+      - name: Upload artifact coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage.xml
+          path: coverage.xml
+          retention-days: 7
+      
+      - name: Comment coverage to PR
+        uses: kuju63/coverage-comment
+        with:
+          token: ${{ github.token }}
+          
 
 
         
