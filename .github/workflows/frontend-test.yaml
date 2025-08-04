@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage.xml
-          path: coverage.xml
+          path: ./src/frontend/coverage.xml
           retention-days: 7
       
       - name: Comment coverage to PR
