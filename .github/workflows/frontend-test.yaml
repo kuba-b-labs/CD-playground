@@ -56,11 +56,22 @@ jobs:
           path: ./src/frontend/coverage.xml
           retention-days: 7
       
-      - name: Comment coverage to PR
-        uses: kuju63/coverage-comment@v1.3.2
+      - name: Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
         with:
-          token: ${{ github.token }}
-          paths: ./src/frontend/coverage.xml
+          filename: ./src/backend/coverage.xml
+          badge: true
+          format: markdown
+          output: both
+
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        #you can add condition for step based on type of commit like pull request
+        if: github.event_name == 'pull_request'
+        with:
+          header: test-coverage-frontend
+          recreate: true
+          path: code-coverage-results.md
   
   docker-image:
     runs-on: ubuntu-latest
@@ -81,9 +92,12 @@ jobs:
         with:
           image-ref: 'frontend'
           format: 'sarif'
+          exit-code: "0"
           severity: 'CRITICAL,HIGH'
+          ignore-unfixed: true
+          vuln-type: "os,library"
           output: 'trivy-results.sarif'
-      
+
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         with:

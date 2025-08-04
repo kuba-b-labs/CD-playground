@@ -78,7 +78,7 @@ jobs:
         #you can add condition for step based on type of commit like pull request
         if: github.event_name == 'pull_request'
         with:
-          header: test-coverage
+          header: test-coverage-backend
           recreate: true
           path: code-coverage-results.md
   
