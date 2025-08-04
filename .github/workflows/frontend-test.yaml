@@ -49,6 +49,9 @@ jobs:
       - name: Run tests for frontend
         run: uv run pytest tests/ -v --cov=src/frontend --cov-report=xml --cov-fail-under=80 
       
+      - name: Debug
+        run: ls -la 
+
       - name: Upload artifact coverage
         uses: actions/upload-artifact@v4
         with:
