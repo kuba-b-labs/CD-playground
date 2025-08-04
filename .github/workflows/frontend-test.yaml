@@ -61,7 +61,27 @@ jobs:
         with:
           token: ${{ github.token }}
           paths: ./src/frontend/coverage.xml
-          
+  
+  docker-image:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: './src/frontend'
+    steps:
+      - name: checkout-code
+        uses: actions/checkout@v4
+        
+      - name: build docker image
+        run: |
+          docker build -t frontend .
+      
+      - name: set up trivy scanning
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: 'frontend'
+          format: 'table'
+          severity: 'CRITICAL,HIGH'
+
 
 
         
