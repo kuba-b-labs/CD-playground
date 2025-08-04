@@ -60,7 +60,7 @@ jobs:
         uses: kuju63/coverage-comment@v1.3.2
         with:
           token: ${{ github.token }}
-          path: coverage.xml
+          paths: coverage.xml
           
 
 
