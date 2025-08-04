@@ -1,0 +1,67 @@
+name: Frontend Test
+
+on:
+  pull_request:
+
+jobs:
+  check_code:
+    runs-on: ubuntu-latest
+    outputs:
+      code-change: ${{ steps.filter.outputs.frontend }}
+#not required for pull requests
+    # steps:
+    #   - name: checkout-code
+    #     uses: actions/checkout@v4
+    steps:
+      - name: path-check
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'src/frontend/**'
+              - '.github/workflows/frontend-test.yaml'
+  test:
+    runs-on: ubuntu-latest
+    needs: check_code
+    if: ${{ needs.check_code.outputs.code-change == 'true' }}
+    defaults:
+      run:
+        working-directory: ./src/frontend
+    steps: 
+      - name: checkout-code
+        uses: actions/checkout@v4
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Sync uv dependencies
+        run: uv sync --locked --dev
+      
+      - name: Check code format with ruff
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "format --check --diff"
+
+      - name: Run tests for frontend
+        run: uv run pytest tests/ -v --cov=src/frontend --cov-report=xml --cov-fail-under=80 
+
+      - name: Upload artifact coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage.xml
+          path: ./src/frontend/coverage.xml
+          retention-days: 7
+      
+      - name: Comment coverage to PR
+        uses: kuju63/coverage-comment@v1.3.2
+        with:
+          token: ${{ github.token }}
+          paths: ./src/frontend/coverage.xml
+          
+
+
+        
