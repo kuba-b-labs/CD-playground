@@ -22,6 +22,7 @@ jobs:
               - 'src/frontend/**'
               - '.github/workflows/frontend-test.yaml'
   test:
+    name: Test Frontend
     runs-on: ubuntu-latest
     needs: check_code
     if: ${{ needs.check_code.outputs.code-change == 'true' }}
