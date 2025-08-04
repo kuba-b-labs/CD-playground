@@ -1,0 +1,40 @@
+name: Frontend Test
+
+on:
+  pull_request:
+
+jobs:
+  check_code:
+    runs-on: ubuntu-latest
+    outputs:
+      code-change: $ {{ steps.filter.outputs.frontend }}
+#not required for pull requests
+    # steps:
+    #   - name: checkout-code
+    #     uses: actions/checkout@v4
+    steps:
+      - name: path-check
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'src/frontend/**'
+              - '.github/workflows/frontend-test.yaml'
+  test:
+    runs-on: ubuntu-latest
+    needs: check_code
+    if: ${{ needs.check_code.outputs.backend == 'true' }}
+    defaults:
+      working-directory: ./src/frontend
+    steps: 
+      - name: checkout-code
+        uses: actions/checkout@v4
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install
+
+        
