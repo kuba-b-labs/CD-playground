@@ -57,9 +57,10 @@ jobs:
           retention-days: 7
       
       - name: Comment coverage to PR
-        uses: kuju63/coverage-comment
+        uses: kuju63/coverage-comment@v1.3.2
         with:
           token: ${{ github.token }}
+          path: coverage.xml
           
 
 
