@@ -26,7 +26,8 @@ jobs:
     needs: check_code
     if: ${{ needs.check_code.outputs.backend == 'true' }}
     defaults:
-      working-directory: ./src/frontend
+      run:
+        working-directory: ./src/frontend
     steps: 
       - name: checkout-code
         uses: actions/checkout@v4
