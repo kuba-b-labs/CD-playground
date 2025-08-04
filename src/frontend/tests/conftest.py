@@ -4,6 +4,7 @@ from contextlib import contextmanager
 from frontend.main import app
 
 
+# 1
 @contextmanager
 def captured_templates(app):
     """Context manager to track templates rendered by the Flask app.
