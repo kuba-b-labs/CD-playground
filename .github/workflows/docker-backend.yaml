@@ -2,10 +2,10 @@ name: Build Docker Image and push to GitHub
 
 on:
   push:
-    branches:
-      - feat/docker-push-ghcr
-    #tags:
-    #  - backend*
+    # branches:
+    #   - feat/docker-push-ghcr
+    tags:
+     - backend*
 
 permissions:
   contents: read
