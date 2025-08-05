@@ -16,10 +16,6 @@ from .config import (
     CORS_ALLOW_HEADERS,
 )
 
-# test this workflow
-
-# test to see if workflow is running
-# test
 # Configure logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
