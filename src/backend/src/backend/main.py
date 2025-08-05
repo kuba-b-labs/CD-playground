@@ -15,11 +15,8 @@ from .config import (
     CORS_ALLOW_METHODS,
     CORS_ALLOW_HEADERS,
 )
+# test to see if workflow is running 12
 
-# test this workflow
-
-# test to see if workflow is running
-# test
 # Configure logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
