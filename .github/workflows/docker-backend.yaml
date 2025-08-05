@@ -30,9 +30,6 @@ jobs:
           #password can be replaced with github token that is created at runtime
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-      
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
 
       - name: Extract tag name
         id: tag
