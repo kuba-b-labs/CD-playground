@@ -12,7 +12,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 RUN --mount=type=cache,target=/root/.cache/uv \
   --mount=type=bind,source=uv.lock,target=uv.lock \
   --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-  uv sync --locked --no-install-project --no-editable
+  uv sync  --no-install-project --no-editable
 
 
 # copy files to the image
@@ -24,7 +24,7 @@ RUN addgroup -S -g 1000 app && adduser -S -u 1000 -G app app
 
 # Sync the project from local cache mount
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --locked
+    uv sync 
 
 EXPOSE 22112
 
