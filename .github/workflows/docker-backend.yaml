@@ -1,0 +1,19 @@
+name: Build Docker Image and push to GitHub
+
+on:
+  push:
+    tags:
+      - backend*
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  Docker-build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          path: ./src/backend
