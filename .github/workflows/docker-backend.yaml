@@ -1,11 +1,11 @@
 name: Build Docker Image and push to GitHub
 
 on:
+  workflow_dispatch:
   push:
-    # branches:
-    #   - feat/docker-push-ghcr
     tags:
-     - backend*
+      - backend*
+
 
 permissions:
   contents: read
