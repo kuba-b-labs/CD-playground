@@ -44,7 +44,7 @@ jobs:
       - name: Install dependencies
         #install only some things like pytest, pytest_asyncio
         run: |
-          uv sync --locked --dev
+          uv sync --dev
 
       - name: Lint with Ruff
         run: |
