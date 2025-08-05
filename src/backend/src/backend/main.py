@@ -15,7 +15,6 @@ from .config import (
     CORS_ALLOW_METHODS,
     CORS_ALLOW_HEADERS,
 )
-# test to see if workflow is running
 
 # Configure logging
 logging.basicConfig(
