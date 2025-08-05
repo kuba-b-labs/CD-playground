@@ -14,9 +14,6 @@ class StudySessionCreate(BaseModel):
     )
 
 
-# testing
-
-
 class StudySession(StudySessionCreate):
     """Complete study session model including generated fields"""
 
