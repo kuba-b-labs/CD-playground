@@ -11,10 +11,22 @@
            "type": "toml",
            "path": "uv.lock",
            "jsonpath": "$.package[?(@.name.value=='cd-playground-backend')].version"
-
-
          }
          ]
-     }
+     },
+    "src/frontend":{
+      "release-type": "python",
+      "package-name": "cd-playground-frontend",
+      "component": "frontend",
+      "include-component-in-tag": true,
+      "changelog-path": "CHANGELOG.md",
+      "extra-files":[
+        {
+          "type": "toml",
+          "path": "uv.lock",
+          "jsonpath": "$.package[?(@.name.value=='cd-playground-frontend')].version"
+        }
+      ]
+    }
     }
 }

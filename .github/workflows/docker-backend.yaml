@@ -1,15 +1,14 @@
 name: Build Docker Image and push to GitHub
 
 on:
+  workflow_dispatch:
   push:
-    # branches:
-    #   - feat/docker-push-ghcr
     tags:
      - backend*
      - frontend*
 
 permissions:
-  contents: read
+  contents: write
   packages: write
 
 env:
@@ -23,8 +22,6 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v4
-        with:
-          path: ./src/backend
 
       - name: docker login to ghcr.io
         uses: docker/login-action@v3
@@ -34,9 +31,6 @@ jobs:
           #password can be replaced with github token that is created at runtime
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-      
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
 
       - name: Extract tag name
         id: tag
@@ -45,7 +39,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          context: ./src/backend
           push: true
           tags: |
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.tag.outputs.TAG }}
             ghcr.io/${{ env.IMAGE_NAME }}:latest
