@@ -12,11 +12,11 @@ permissions:
   packages: write
 
 env:
-  IMAGE_NAME: ${{ github.repository_owner }}/cd-playground-backend
+  IMAGE_NAME_BACKEND: ${{ github.repository_owner }}/cd-playground-backend
+  IMAGE_NAME_FRONTEND: ${{ github.repository_owner }}/cd-playground-frontend
 
 jobs:
   Docker-build-and-push:
-    if: startsWith(github.ref_name,'backend')
     runs-on: ubuntu-latest
     steps:
 
@@ -38,8 +38,21 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v6
+        if: startsWith(GITHUB_REF.name,'backend')
         with:
           context: ./src/backend
           push: true
           tags: |
-            ghcr.io/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ env.IMAGE_NAME_BACKEND }}:${{ steps.tag.outputs.TAG }}
+            ghcr.io/${{ env.IMAGE_NAME_BACKEND }}:latest
+
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        if: startsWith(GITHUB_REF.name,'frontend')
+        with:
+          context: ./src/frontend
+          push: true
+          tags: |
+            ghcr.io/${{ env.IMAGE_NAME_FRONTEND }}:${{ steps.tag.outputs.TAG }}
+            ghcr.io/${{ env.IMAGE_NAME_FRONTEND }}:latest
