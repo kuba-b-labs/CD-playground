@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/kuba-b-labs/CD-playground/compare/frontend-v0.2.0...frontend-v0.2.1) (2025-08-06)
+
+
+### Bug Fixes
+
+* **release-please:** fix wrong jsonpath ([5f4bf71](https://github.com/kuba-b-labs/CD-playground/commit/5f4bf7136bd3ecd5db7ff54d491628c1be0d2b98))
+
 ## [0.2.0](https://github.com/kuba-b-labs/CD-playground/compare/frontend-v0.1.0...frontend-v0.2.0) (2025-08-06)
 
 
