@@ -14,8 +14,8 @@ COPY . /app
 # so when using uv sync and cache you end up speeding up creation of the image till the project part
 #remember to mount using bind type for uv.lock and pyproject.toml
 RUN --mount=type=cache,target=/root/.cache/uv \
-  --mount=type=bind,source=uv.lock,target=uv.lock \
-  --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+ # --mount=type=bind,source=uv.lock,target=uv.lock \
+#  --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
   uv sync --locked --no-install-project --no-editable
 
 
