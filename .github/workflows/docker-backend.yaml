@@ -16,7 +16,7 @@ env:
 
 jobs:
   Docker-build-and-push:
-    if: startsWith(GITHUB_REF.name,'backend')
+    if: startsWith(github.ref_name,'backend')
     runs-on: ubuntu-latest
     steps:
 
