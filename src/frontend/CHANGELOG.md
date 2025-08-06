@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/kuba-b-labs/CD-playground/compare/frontend-v0.2.1...frontend-v0.2.2) (2025-08-06)
+
+
+### Bug Fixes
+
+* **gha:** fixed wrong package name in uv.lock for release-please-config ([7c8e810](https://github.com/kuba-b-labs/CD-playground/commit/7c8e810006abc0c24305f63459c4f1349884b6c5))
+
 ## [0.2.1](https://github.com/kuba-b-labs/CD-playground/compare/frontend-v0.2.0...frontend-v0.2.1) (2025-08-06)
 
 
