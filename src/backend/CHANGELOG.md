@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/kuba-b-labs/CD-playground/compare/backend-v0.2.1...backend-v0.3.0) (2025-08-06)
+
+
+### Features
+
+* **gha:** uv sync fixed ([#33](https://github.com/kuba-b-labs/CD-playground/issues/33)) ([2183193](https://github.com/kuba-b-labs/CD-playground/commit/2183193d5190414a9afa5f77df42a3feb0a01c2b))
+
 ## [0.2.1](https://github.com/kuba-b-labs/CD-playground/compare/backend-v0.2.0...backend-v0.2.1) (2025-08-05)
 
 
