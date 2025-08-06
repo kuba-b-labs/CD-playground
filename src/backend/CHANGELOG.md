@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/kuba-b-labs/CD-playground/compare/backend-v0.4.0...backend-v0.4.1) (2025-08-06)
+
+
+### Bug Fixes
+
+* **backend:** fix for read only layer build ([c5445fb](https://github.com/kuba-b-labs/CD-playground/commit/c5445fbb8e35ce09406cdb8650d935a659a77c7d))
+
 ## [0.4.0](https://github.com/kuba-b-labs/CD-playground/compare/backend-v0.3.0...backend-v0.4.0) (2025-08-06)
 
 
