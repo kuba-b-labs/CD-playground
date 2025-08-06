@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/kuba-b-labs/CD-playground/compare/frontend-v0.1.0...frontend-v0.2.0) (2025-08-06)
+
+
+### Features
+
+* **docker:** changed layering order ([ba99093](https://github.com/kuba-b-labs/CD-playground/commit/ba990933e75b08460483992f06df5bcc9713d533))
+
 ## 0.1.0 (2025-08-06)
 
 

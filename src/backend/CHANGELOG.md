@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/kuba-b-labs/CD-playground/compare/backend-v0.3.0...backend-v0.4.0) (2025-08-06)
+
+
+### Features
+
+* **backend:** new test ([#38](https://github.com/kuba-b-labs/CD-playground/issues/38)) ([57472e3](https://github.com/kuba-b-labs/CD-playground/commit/57472e3ffa719182927658885ed68527f65e1074))
+* **docker:** changed layering order ([ba99093](https://github.com/kuba-b-labs/CD-playground/commit/ba990933e75b08460483992f06df5bcc9713d533))
+
 ## [0.3.0](https://github.com/kuba-b-labs/CD-playground/compare/backend-v0.2.1...backend-v0.3.0) (2025-08-06)
 
 
