@@ -17,7 +17,6 @@ env:
 
 jobs:
   Docker-build-and-push:
-
     runs-on: ubuntu-latest
     steps:
 
