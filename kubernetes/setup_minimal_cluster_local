@@ -1,0 +1,33 @@
+#!/bin/bash
+pwd
+CLUSTER_NAME="dev"
+
+check_dependency(){
+    echo "Checking dependency $1"
+    if ! command -v $1 &>/dev/null ;then
+        echo "Dependency $1 needed!"
+        exit 2
+    fi
+}
+
+check_dependency docker
+check_dependency kubectl
+check_dependency k9s
+check_dependency k3d
+
+if k3d cluster list | grep -q "$CLUSTER_NAME";then
+    echo "$CLUSTER_NAME already exists"
+    read -p "Do you want to delete and recreate it? (y/n): " -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Deleting existing cluster..."
+        k3d cluster delete "$CLUSTER_NAME"
+     else
+        echo "Using existing cluster."
+    fi
+else
+    echo "Creating minimal dev cluster"
+    k3d cluster create dev
+fi
+# Configure kubectl to use the cluster
+echo "Configuring kubectl to use the cluster..."
+kubectl config use-context k3d-"$CLUSTER_NAME"
