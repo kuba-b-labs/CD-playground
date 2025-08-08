@@ -1,0 +1,41 @@
+name: End to end testing
+
+on:
+  workflow_run:
+    workflows:
+      - Frontend Test
+      - Backend Test
+    types:
+      - completed
+  pull_request:
+
+
+jobs:
+  E2E-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./kubernetes
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.workflow_run.repository.full_name }}
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Sync uv dependencies
+        run: uv sync --locked
+
+      - name: Download k3d
+        run: |
+          curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+
+      - name: Execute Python Script
+        run: |
+          uv run e2e_test.py
+          
