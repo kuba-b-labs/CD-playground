@@ -33,3 +33,7 @@ run = "bash ./kubernetes/setup_cluster_local"
 [tasks.k8s-setup-minimal]
 description = "Set up a basic minimal Kubernetes cluster"
 run = "bash ./kubernetes/setup_minimal_cluster_local"
+
+[tasks.e2e-test]
+description = "Set up python end to end testing using k3d"
+run = "cd ./kubernetes && uv run e2e_test.py"
