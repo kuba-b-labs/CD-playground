@@ -33,5 +33,5 @@ jobs:
 
       - name: Execute Python Script
         run: |
-          uv run e2e-test.py
+          uv run e2e_test.py
           
